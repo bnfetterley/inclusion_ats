@@ -3,13 +3,23 @@ import Nav from './Nav'
 import AdminContainer from './containers/AdminContainer'
 import ApplicantsContainer from './containers/ApplicantsContainer'
 import FormContainer from './containers/FormContainer'
+import Dashboard from './components/Dashboard'
 import { Route, Switch, withRouter } from 'react-router-dom'
 
 class App extends Component {
 
   state = {
      createAdminForm: false,
-     admins: ["bri", "Stefano", "Rita"]
+     admins: ["bri", "Stefano", "Rita"],
+     applicants: [
+       {name: "Alex Mosquea", status: "new"}, {name: "Raq Robinson", status: "Under Review"}
+     ],
+     forms: [
+       {name: "Summer Program", question_id: 0, question_id: 1, question_id: 3, active: "yes"
+       },
+       {name: "Winter Program", question_id: 4, question_id: 5, question_id: 6, active: "no"
+       }
+     ]
   }
 
   //CALLBACK FOR CREATE ADMIN MODAL
@@ -25,13 +35,15 @@ class App extends Component {
       
         <div className="App">
       <Nav/>
-      <h1>INCLUSION APPLICANT TRACKING SYSTEM</h1>
-
-      <p>Welcome, BriAdmin </p>
-
-      <h1>546</h1> new applicants to review
       
       <Switch>
+
+      <Route path= "/" exact  render={(props) => 
+        <Dashboard
+      
+        />
+      }/>
+
       <Route path= "/admin" exact  render={(props) => 
         <AdminContainer 
         displayCreateAdminForm = {this.state.createAdminForm}
@@ -44,14 +56,14 @@ class App extends Component {
 
      <Route path= "/applications" exact  render={(props) => 
         <ApplicantsContainer 
-        
+         applicants = {this.state.applicants}
         />
       }/>
 
 
      <Route path= "/forms" exact  render={(props) => 
         <FormContainer 
-        
+        forms = {this.state.forms}
         />
       }/>
 

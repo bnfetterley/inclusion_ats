@@ -6,9 +6,8 @@ export default class AdminContainer extends Component {
     render() {
         return (
             <div>
-           
+           <h1>Admins: </h1>
          {this.props.admins.map(admin => <li>  {admin} </li>)
-         
          }
 
 
