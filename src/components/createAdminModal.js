@@ -1,21 +1,38 @@
 import React, { Component } from 'react'
-import '../DishForm.css';
+import '../CreateAdminModal.css';
 
-const createAdminModal = props => {
+const CreateAdminModal = props => {
 
     const divStyle = { 
       display: props.displayModal ? 'block' : 'none'
  };
-
+ console.log(props)
+ 
  return (
-
-    <div className="modal" onClick={ props.closeModal } style={divStyle}> 
+         
+         
+         <div className="modal" onClick={ props.displayFormClick } style={{display: props.displayModal ? 'block' : 'none'}}> 
             <div className="modal-content"   onClick={ e => e.stopPropagation()} >
+         <button className="close" onClick={ props.displayFormClick }> X </button>
 
 
+   <h1>CREATE AN ADMIN</h1>
 
+   <form >
 
-    <span className="close" onClick={ props.closeModal }> X </span>
+  <label>
+    Name:
+    <input type="text" name="name" />
+  </label>
+  <br></br>
+  <label>
+    Password:<input type="password" name="password" />
+  </label>
+
+<br></br>
+  <input type="submit" value="Submit" />
+</form>
+
             </div>
     </div>
 
@@ -23,4 +40,4 @@ const createAdminModal = props => {
 }
 
 
-export default createAdminModal;
+export default CreateAdminModal;

@@ -8,8 +8,8 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 class App extends Component {
 
   state = {
-     createAdminForm: false
-
+     createAdminForm: false,
+     admins: ["bri", "Stefano", "Rita"]
   }
 
   //CALLBACK FOR CREATE ADMIN MODAL
@@ -36,12 +36,11 @@ class App extends Component {
         <AdminContainer 
         displayCreateAdminForm = {this.state.createAdminForm}
         displayFormClick = {this.createAdminForm}
+        displayModal = {this.state.createAdminForm}
+        admins = {this.state.admins}
         />
       }/>
 
-      <createAdminModal
-      displayModal = {this.state.createAdminForm}
-      />
 
      <Route path= "/applications" exact  render={(props) => 
         <ApplicantsContainer 
